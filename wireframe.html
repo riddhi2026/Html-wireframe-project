@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Times New Roman", serif;
+            background: #fff;
+            color: #111;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            width: 100%;
+            height: 65px;
+            border: 1px solid #777;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            width: 140px;
+            height: 100%;
+            border-right: 1px solid #777;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #000;
+            transform: skew(-15deg);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .nav-links a {
+            color: #0000ee;
+            text-decoration: underline;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .hire {
+            width: 120px;
+            height: 100%;
+            border-left: 1px solid #777;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hire button {
+            background: white;
+            border: 1px solid #555;
+            padding: 4px 10px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            height: 270px;
+            border-left: 1px solid #777;
+            border-right: 1px solid #777;
+            border-bottom: 2px solid #777;
+            display: grid;
+            grid-template-columns: 65% 35%;
+        }
+
+        .hero-content {
+            padding: 55px 10px 20px;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-size: 25px;
+        }
+
+        .hero-content h2 {
+            color: red;
+            font-size: 25px;
+        }
+
+        .hero-content h3 {
+            color: blue;
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .hero-content p {
+            font-size: 15px;
+            line-height: 18px;
+        }
+
+        .hero-image {
+            border-left: 1px solid #777;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .person {
+            width: 180px;
+            height: 240px;
+            background: linear-gradient(
+                to bottom,
+                #f1c6a8 0 25%,
+                #222 25% 100%
+            );
+            border-radius: 45% 45% 10px 10px;
+            position: relative;
+            opacity: .85;
+        }
+
+        .person::before {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 90px;
+            background: #e6b38f;
+            border-radius: 50%;
+            top: 5px;
+            left: 50px;
+        }
+
+        .person::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 150px;
+            background: #202020;
+            top: 80px;
+            left: 40px;
+            border-radius: 30px 30px 0 0;
+        }
+
+        /* ================= MARQUEE ================= */
+
+        .welcome {
+    height: 35px;
+    border-bottom: 1px solid #777;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.welcome {
+    display: none !important;
+}
+
+.welcome p {
+    display: none !important;
+}
+@keyframes move {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+
+        /* ================= SECTION ================= */
+
+        .section-title {
+            height: 55px;
+            border-bottom: 2px solid #777;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000080;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        /* ================= ABOUT ================= */
+
+        .about {
+            min-height: 265px;
+            border-bottom: 2px solid #777;
+            display: grid;
+            grid-template-columns: 35% 65%;
+        }
+
+        .about-image {
+            border-right: 1px solid #777;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-text {
+            padding: 35px 15px;
+            display: flex;
+            align-items: center;
+            text-align: justify;
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        .about-text mark {
+            background: yellow;
+        }
+
+        /* ================= SKILLS ================= */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-bottom: 2px solid #777;
+        }
+
+        .skill {
+            height: 150px;
+            border-right: 1px solid #777;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill:last-child {
+            border-right: none;
+        }
+
+        .skill-logo {
+            width: 105px;
+            height: 105px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 55px;
+            font-weight: bold;
+            clip-path: polygon(
+                10% 0, 90% 0, 100% 15%,
+                90% 100%, 10% 100%, 0 15%
+            );
+        }
+
+        .c-logo {
+            background: #4b8bc4;
+        }
+
+        .html-logo {
+            background: #ed4b25;
+        }
+
+        .css-logo {
+            background: #0878bb;
+        }
+
+        .bootstrap-logo {
+            background: #7111db;
+            border-radius: 15px;
+            clip-path: none;
+        }
+
+        /* ================= PROJECTS ================= */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding: 10px;
+            border-bottom: 2px solid #777;
+        }
+
+        .project {
+            height: 200px;
+            border: 1px solid #555;
+            overflow: hidden;
+            position: relative;
+            background: #222;
+        }
+
+        .project-bg {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .project:nth-child(1) .project-bg {
+            background:
+                radial-gradient(circle at 20% 30%, #d4af37 0 15px, transparent 16px),
+                linear-gradient(135deg, #101b22, #314b3b);
+        }
+
+        .project:nth-child(2) .project-bg {
+            background:
+                radial-gradient(circle, #e5c45c 0 20px, transparent 21px),
+                linear-gradient(135deg, #1b1b1b, #493528);
+        }
+
+        .project:nth-child(3) .project-bg {
+            background:
+                linear-gradient(135deg, #111, #3e3127);
+        }
+
+        /* ================= EDUCATION ================= */
+
+        .education {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-bottom: 2px solid #777;
+        }
+
+        .education-box {
+            min-height: 80px;
+            border-right: 1px solid #777;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .education-box:last-child {
+            border-right: none;
+        }
+
+        /* ================= CERTIFICATES ================= */
+
+        .certificates {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 2px solid #777;
+        }
+
+        .certificate {
+            min-height: 90px;
+            border-right: 1px solid #777;
+            text-align: center;
+            padding: 15px;
+            font-size: 13px;
+        }
+
+        .certificate:last-child {
+            border-right: none;
+        }
+
+        .certificate strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-bottom: 2px solid #777;
+        }
+
+        .contact-box {
+            min-height: 50px;
+            border-right: 1px solid #777;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .contact-box:last-child {
+            border-right: none;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            display: grid;
+            grid-template-columns: 33% 34% 33%;
+            min-height: 165px;
+            border-left: 1px solid #777;
+            border-right: 1px solid #777;
+        }
+
+        .footer-col {
+            border-right: 1px solid #777;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .footer-col:last-child {
+            border-right: none;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 12px;
+        }
+
+        .footer-col p {
+            margin: 8px 0;
+            font-size: 13px;
+        }
+
+        .footer-logo {
+            font-size: 45px;
+            font-weight: bold;
+            margin-top: 35px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                height: auto;
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                width: 80px;
+                height: 55px;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                padding: 10px;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .hire {
+                height: 55px;
+                width: 80px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .hero-content {
+                min-height: 230px;
+            }
+
+           .hero-image {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+}
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                min-height: 250px;
+                border-right: none;
+                border-bottom: 1px solid #777;
+            }
+
+            .skills {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skill:nth-child(2) {
+                border-right: none;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .education {
+                grid-template-columns: 1fr;
+            }
+
+            .education-box {
+                border-right: none;
+                border-bottom: 1px solid #777;
+            }
+
+            .certificates {
+                grid-template-columns: 1fr;
+            }
+
+            .certificate {
+                border-right: none;
+                border-bottom: 1px solid #777;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-box {
+                border-right: none;
+                border-bottom: 1px solid #777;
+                padding: 12px;
+            }
+
+            footer {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-col {
+                border-right: none;
+                border-bottom: 1px solid #777;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span>P</span>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Project</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="hire">
+            <button>Hire Me!</button>
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Hello I'm</h1>
+
+            <h2>Your Name</h2>
+
+            <h3>Your field Name</h3>
+
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Laudantium, magnam molestiae ut molestias quod aperiam
+                possimus in accusantium earum quos nisi nemo assumenda
+                excepturi eos quisquam nostrum totam quam!
+                Numquam dolores impedit, consectetur nesciunt laborum
+                commodi? Culpa necessitatibus, ipsa dolore atque autem
+                aliquam maxime magnam ex accusantium impedit expedita.
+            </p>
+
+        </div>
+
+        <div class="hero-image">
+    <img src="https://img.magnific.com/free-photo/portrait-person-attending-vibrant-techno-music-party_23-2150551572.jpg?semt=ais_hybrid&w=740&q=80 " alt="My Profile">
+</div>
+
+    </section>
+
+
+    <!-- ================= WELCOME ================= -->
+
+    <div class="welcome">
+    <p>
+        Welcome to my portfolio! Check out my latest projects and skills.
+    </p>
+</div>
+
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about">
+
+        <div class="section-title">
+            About Me
+        </div>
+
+        <div class="about">
+
+            <div class="about-image">
+    <img src="https://cdn.pokecut.com/resource/webseo/addpersontophoto_handletemplate9_after.webp" alt="My Profile">
+</div>
+
+
+            <div class="about-text">
+
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Eveniet maiores, asperiores porro odit similique natus
+                    nulla soluta, ex maiores accusamus odio fugiat. Asperiores
+                    laudantium deserunt voluptatem pariatur maxime
+                    exercitationem velit.
+
+                    Optio officia inventore nihil laboriosam dolores quae
+                    veniam, blanditiis deserunt eaque, adipisci eos
+                    consequatur accusamus eligendi voluptate quod maxime
+                    nobis?
+
+                    <mark>
+                        <b>Assumenda unde nam at recusandae fugit quo</b>
+                    </mark>
+
+                    temporibus saepe!
+
+                    Iusto eveniet modi accusantium deserunt quis illo
+                    delectus ipsam et fugiat quibusdam porro cumque in
+                    corporis, omnis tempore eos mollitia officia
+                    necessitatibus dolorem magni soluta similique odit
+                    commodi!
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SKILLS ================= -->
+
+    <section id="skills">
+
+        <div class="section-title">
+            My Skills
+        </div>
+
+        <div class="skills">
+
+            <div class="skill">
+                <div class="skill-logo c-logo">C</div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-logo html-logo">5</div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-logo css-logo">3</div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-logo bootstrap-logo">B</div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROJECTS ================= -->
+
+    <section id="projects">
+
+        <div class="section-title">
+            Projects
+        </div>
+
+        <div class="projects">
+
+            <div class="project">
+                <div class="project-bg">
+                    Crypto / Food UI
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-bg">
+                    Food Delivery
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-bg">
+                    Off-Road Cars
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EDUCATION ================= -->
+
+    <section id="education">
+
+        <div class="section-title">
+            Education
+        </div>
+
+        <div class="education">
+
+            <div class="education-box">
+                <b>10<sup>th</sup> SSC</b>
+                <br>
+                Kasturba Vidyabhavan
+                <br>
+                I complete SSC in year 2020-2021
+            </div>
+
+            <div class="education-box">
+                <b>12<sup>th</sup> HSC</b>
+                <br>
+                Kasturba Vidyabhavan
+                <br>
+                I complete HSC in year 2022-2023
+            </div>
+
+            <div class="education-box">
+                <b>Degree</b>
+                <br>
+                Vidhyadeep University
+                <br>
+                running Diploma Computer Engineering
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CERTIFIED COURSES ================= -->
+
+    <section>
+
+        <div class="section-title">
+            Certified Courses
+        </div>
+
+        <div class="certificates">
+
+            <div class="certificate">
+
+                <strong>Course</strong>
+
+                <b>GIM</b>
+                <br>
+
+                Red & White Multimedia Education
+
+            </div>
+
+            <div class="certificate">
+
+                <strong>Course</strong>
+
+                <b>Master</b>
+                <br>
+
+                Full Stack Web Developer
+                <br>
+
+                Red & White Multimedia Education
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section id="contact">
+
+        <div class="section-title">
+            Contact Us
+        </div>
+
+        <div class="contact-info">
+
+            <div class="contact-box">
+                mobile no:- +91 0123456789
+            </div>
+
+            <div class="contact-box">
+                email id:- xyz12@gmail.com
+            </div>
+
+            <div class="contact-box">
+                linkedin id:- xyz12
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-col">
+
+            <div class="footer-logo">
+                P
+            </div>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h3>About us</h3>
+
+            <p>Home</p>
+            <p>About Me</p>
+            <p>Skills</p>
+            <p>Project</p>
+            <p>Education</p>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h3>Contact me</h3>
+
+            <p>
+                <b>Mobile</b><br>
+                +91 0123456789
+            </p>
+
+            <p>
+                <b>Email</b><br>
+                xyz12@gmail.com
+            </p>
+
+            <p>
+                <b>LinkedIn</b><br>
+                xyz12
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
